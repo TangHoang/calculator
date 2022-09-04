@@ -27,37 +27,37 @@ const display = document.querySelector(".display");
 // button click events
 buttons.forEach((button) => {button.addEventListener("click", input);});
 buttonMult.onclick = () => {
-    operation = "*";
     display.innerHTML = "";
     if(counter != 0){
         operate(numbers, operation);
     }
-    counter = counter + 1;
-
+    operation = "*";
+    counter = 1
 }
 buttonDivide.onclick = () => {
-    operation = "/";
     display.innerHTML = "";
     if(counter != 0){
         operate(numbers, operation);
     }
-    counter = counter + 1;
+    operation = "/";
+    counter = 1;
 }
 buttonAdd.onclick = () => {
-    operation = "+";
     display.innerHTML = "";
     if(counter != 0){
         operate(numbers, operation);
     }
-    counter = counter + 1;
+    operation = "+";
+    counter = 1;
 }
 buttonSub.onclick = () => {
-    operation = "-";
+    
     display.innerHTML = "";
     if(counter != 0){
         operate(numbers, operation);
     }
-    counter = counter + 1;
+    operation = "-";
+    counter = 1;
 }
 buttonEquals.onclick = () => {
     operate(numbers, operation);
@@ -67,8 +67,8 @@ buttonEquals.onclick = () => {
 }
 buttonDelete.onclick = () => {
     // remove last elements
-    display.innerHTML.slice(0,-1);
-    numbers.slice(0,-1);
+    display.innerHTML = display.innerHTML.slice(0,-1);
+    numbers.pop();
 }
 buttonClear.onclick = () => {
     numbers = [];
@@ -84,23 +84,24 @@ buttonClear.onclick = () => {
 
 function input(e){ // save input of user in an array
     numbers.push(this.innerHTML);
-    console.log(numbers);
     if(counter > 0){
         display.innerHTML = "";
+
     }
     display.innerHTML = display.innerHTML + this.innerHTML;
 }
 function operate(numbers, operation){ // get numbers of input
     display.innerHTML = "";
-    split(numbers, operation);
-    
+    passed = false;
+    split(numbers);
+    console.log(numbers);
     num_1 = parseInt(str_num_1);
     num_2 = parseInt(str_num_2);
+    console.log(str_num_2);
 
     // reset variables for next numbers for example (1+1)+1
     str_num_1 = "";
     str_num_2 = "";
-    passed = false;
 
     console.log(num_1);
     console.log(num_2);
@@ -110,15 +111,15 @@ function operate(numbers, operation){ // get numbers of input
     if(operation == "*"){return mult(num_1, num_2);}
     if(operation == "/"){return div(num_1, num_2);}
 }
-function split(array, operation){
+function split(array){
+    console.log(numbers);
     for(let i=0; i<array.length; i++){
-        if(array[i] === operation){
+        if(array[i] === "+" || array[i] === "*" || array[i] === "/" || array[i] === "-"){
             passed = true;
             continue;
         }
         if(passed == false){
             str_num_1 = str_num_1 + array[i];
-            console.log(str_num_1);
             continue;
         }
         if(passed == true){
@@ -131,19 +132,22 @@ function add(a,b){
     numbers = [`${result}`, '+'];
     display.innerHTML = result;
     console.log(numbers);
-
     return;
 }
 function sub(a,b){
     result = a - b;
     numbers = [`${result}`, '-'];
     display.innerHTML = result;
+    console.log(numbers);
+
     return;
 }
 function mult(a,b){
     result = a * b;
     numbers = [`${result}`, '*'];
     display.innerHTML = result;
+    console.log(numbers);
+
     return;
 }
 function div(a,b){
@@ -153,6 +157,8 @@ function div(a,b){
         result = a / b;
         numbers = [`${result}`, '/'];
         display.innerHTML = result;
+        console.log(numbers);
+
     }
     return;
 }
