@@ -7,7 +7,8 @@ let passed = false;
 let result;
 let str_num_1 = "";
 let str_num_2 = "";
-let counter = 0;
+let firstOperator = true; //true if there is only one operator, false if there is more than one operator
+let operationForDisplay; // variable just for display purposes
 
 // buttons
 const buttons = document.querySelectorAll(".input");
@@ -27,42 +28,42 @@ const display = document.querySelector(".display");
 // button click events
 buttons.forEach((button) => {button.addEventListener("click", input);});
 buttonMult.onclick = () => {
-    display.innerHTML = "";
-    if(counter != 0){
+    operationForDisplay = "*";
+    if(firstOperator == false){
         operate(numbers, operation);
     }
     operation = "*";
-    counter = 1
+    firstOperator = false;
 }
 buttonDivide.onclick = () => {
-    display.innerHTML = "";
-    if(counter != 0){
+    operationForDisplay = "/";
+    if(firstOperator === false){
         operate(numbers, operation);
     }
     operation = "/";
-    counter = 1;
+    firstOperator = false;
 }
 buttonAdd.onclick = () => {
-    display.innerHTML = "";
-    if(counter != 0){
+    operationForDisplay = "+";
+    if(firstOperator === false){
         operate(numbers, operation);
     }
     operation = "+";
-    counter = 1;
+    firstOperator = false;
 }
 buttonSub.onclick = () => {
-    
-    display.innerHTML = "";
-    if(counter != 0){
+    operationForDisplay = "-";
+    if(firstOperator === false){
         operate(numbers, operation);
     }
     operation = "-";
-    counter = 1;
+    firstOperator = false;;
 }
 buttonEquals.onclick = () => {
+    operationForDisplay = "";
     operate(numbers, operation);
     // reset variables
-    counter = 0;
+    firstOperator = true;
     numbers = [];
 }
 buttonDelete.onclick = () => {
@@ -78,15 +79,14 @@ buttonClear.onclick = () => {
     passed = false;
     result = null;
     display.innerHTML = "";
-    counter = 0;
+    firstOperator = true;
 }
 // functions
 
 function input(e){ // save input of user in an array
     numbers.push(this.innerHTML);
-    if(counter > 0){
-        display.innerHTML = "";
-
+    if(firstOperator === false){
+        //display.innerHTML = "";
     }
     display.innerHTML = display.innerHTML + this.innerHTML;
 }
@@ -94,25 +94,19 @@ function operate(numbers, operation){ // get numbers of input
     display.innerHTML = "";
     passed = false;
     split(numbers);
-    console.log(numbers);
-    num_1 = parseInt(str_num_1);
-    num_2 = parseInt(str_num_2);
-    console.log(str_num_2);
+    num_1 = parseFloat(str_num_1);
+    num_2 = parseFloat(str_num_2);
 
     // reset variables for next numbers for example (1+1)+1
     str_num_1 = "";
     str_num_2 = "";
 
-    console.log(num_1);
-    console.log(num_2);
-   
     if(operation == "+"){return add(num_1, num_2);}
     if(operation == "-"){return sub(num_1, num_2);}
     if(operation == "*"){return mult(num_1, num_2);}
     if(operation == "/"){return div(num_1, num_2);}
 }
 function split(array){
-    console.log(numbers);
     for(let i=0; i<array.length; i++){
         if(array[i] === "+" || array[i] === "*" || array[i] === "/" || array[i] === "-"){
             passed = true;
@@ -130,24 +124,19 @@ function split(array){
 function add(a,b){
     result = a + b;
     numbers = [`${result}`, '+'];
-    display.innerHTML = result;
-    console.log(numbers);
+    display.innerHTML = `${result}${operationForDisplay}`;
     return;
 }
 function sub(a,b){
     result = a - b;
     numbers = [`${result}`, '-'];
-    display.innerHTML = result;
-    console.log(numbers);
-
+    display.innerHTML = `${result}${operationForDisplay}`;
     return;
 }
 function mult(a,b){
     result = a * b;
     numbers = [`${result}`, '*'];
-    display.innerHTML = result;
-    console.log(numbers);
-
+    display.innerHTML = `${result}${operationForDisplay}`;
     return;
 }
 function div(a,b){
@@ -156,9 +145,7 @@ function div(a,b){
     }else{
         result = a / b;
         numbers = [`${result}`, '/'];
-        display.innerHTML = result;
-        console.log(numbers);
-
+        display.innerHTML = `${result}${operationForDisplay}`;
     }
     return;
 }
