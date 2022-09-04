@@ -1,0 +1,63 @@
+
+
+* {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+    background-color: black;
+}
+.display-container {
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+header {
+    height: 4vh;
+    width: 100vw;
+    font-size: 0.4rem;
+    color: aliceblue;
+    padding-top: 2px;
+    padding-left: 8px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: normal;
+}
+
+.display {
+    width: 90vw;
+    height: 40vh;
+    padding-right: 10px;
+    justify-self: center;
+    align-self: center;
+    color: aliceblue;
+    font-size: 3rem;
+    text-align: right;
+    line-height: 70vh;
+    margin-bottom: 5vh;
+    border-bottom: 1px solid lightblue;
+}
+
+.container {
+    height: 48vh;
+    display: grid;
+    gap: 5px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    padding: 10px;
+}
+
+.button {
+    background-color: azure;
+    border-radius: 90px;
+    font-size: 2rem;
+}
+
+.operator {
+    font-size: 3rem;
+}
+
+#num-0 {
+    grid-row: 5;
+    grid-column: 1/3;
+}
