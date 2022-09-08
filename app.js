@@ -1,3 +1,7 @@
+// get correct sizing for mobile
+let vh = window.innerHeight * 0.01;
+document.documentElement.style.setProperty("--vh", `${vh}px`);
+
 // Variables
 let operation;
 let num_1 = "";

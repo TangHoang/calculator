@@ -1,4 +1,6 @@
-
+:root{
+    --vh: 0px; /* initialising for further use */
+}
 
 * {
     margin: 0;
@@ -9,10 +11,14 @@
 
 body{
     background-color: #2B2C2D;
+    height: calc(var(--vh, 1vh) * 100);
+}
+main{
+    height: 85%;
 }
 
 .display-container {
-    height: 33vh;
+    height: 30%;
     display: flex;
     flex-flow: column nowrap;
     justify-content: flex-end;
@@ -23,17 +29,20 @@ body{
 }
 
 header {
-    height: 4vh;
+    height: 15%;
     width: 100vw;
     font-size: 0.4rem;
     color: aliceblue;
-    padding-top: 2px;
     padding-left: 8px;
-    margin-top: 2vh;
-    margin-bottom: 8vh;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: normal;
 }
+
+h1 {
+    padding-top: 15px;
+    padding-bottom: 5px;
+}
+
 
 .display {
     display: flex;
@@ -50,6 +59,7 @@ header {
 
 .container {
     width: 100vw;
+    height: 70%;
     display: flex;
     flex-flow: row nowrap;
     align-items: center;
@@ -57,7 +67,7 @@ header {
 }
 
 .buttons-container {
-    height: 48vh;
+    height: 90%;
     width: 100vw;
     display: grid;
     gap: 5px;
@@ -71,6 +81,7 @@ header {
     border-radius: 90px;
     font-size: 8.5vmin;
     font-weight: 500;
+    min-width: 50px;
     max-width: 90px;
     border: none;
     box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.2);
@@ -81,12 +92,13 @@ header {
 }
 
 .operator {
-    font-size: 3rem;
+    font-size: 38px;
     background-color: #C37D7D;
 }
 
 .function {
     background-color: #C0C8D6;
+    font-size: 8vmin;
 }
 
 #num-0 {
@@ -99,7 +111,7 @@ header {
 }
 
 
-@media (min-width:415px)  {
+@media (min-width:425px)  {
     /* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
     .buttons-container {
         width: 70%;
@@ -116,16 +128,25 @@ header {
 
     .button {
         font-size: 6.5vmin;
+        min-width: 70px;
+    }
+
+    .function{
+        font-size: 30px;
     }
 }
 
 @media (min-width:560px) {
     .display {
         padding-right: 27vw;
-        font-size: 60px;
+        font-size: 40px;
     }
 
     .button {
-        font-size: 40px;
+        font-size: 30px;
+    }
+    
+    .operator {
+        font-size: 45px;
     }
 }
