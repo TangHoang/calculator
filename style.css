@@ -49,6 +49,7 @@ header {
 }
 
 .container {
+    width: 100vw;
     display: flex;
     flex-flow: row nowrap;
     align-items: center;
@@ -57,8 +58,7 @@ header {
 
 .buttons-container {
     height: 48vh;
-    width: 100%;
-    max-width: 300px;
+    width: 100vw;
     display: grid;
     gap: 5px;
     grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -69,7 +69,8 @@ header {
 .button {
     background-color: #fefefe;
     border-radius: 90px;
-    font-size: 8vmin;
+    font-size: 8.5vmin;
+    font-weight: 500;
     max-width: 90px;
     border: none;
     box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.2);
@@ -100,8 +101,6 @@ header {
 
 @media (min-width:415px)  {
     /* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
-    
-
     .buttons-container {
         width: 70%;
         max-width: 450px;
@@ -120,8 +119,13 @@ header {
     }
 }
 
-@media (min-width: 560px) {
+@media (min-width:560px) {
     .display {
-        padding-right: 20vw;
+        padding-right: 27vw;
+        font-size: 60px;
+    }
+
+    .button {
+        font-size: 40px;
     }
 }
