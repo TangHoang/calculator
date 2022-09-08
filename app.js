@@ -61,10 +61,12 @@ buttonSub.onclick = () => {
 }
 buttonEquals.onclick = () => {
     operationForDisplay = "";
-    operate(numbers, operation);
-    // reset variables
     firstOperator = true;
-    numbers = [];
+    operate(numbers, operation);
+    numbers.pop();
+    console.log(numbers);
+    // reset variables
+    //numbers = [];
 }
 buttonDelete.onclick = () => {
     // remove last elements
@@ -85,6 +87,7 @@ buttonClear.onclick = () => {
 
 function input(e){ // save input of user in an array
     numbers.push(this.innerHTML);
+    console.log(numbers);
     if(firstOperator === false){
         //display.innerHTML = "";
     }
