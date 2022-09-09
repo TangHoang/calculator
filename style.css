@@ -22,7 +22,7 @@ main{
     display: flex;
     flex-flow: column nowrap;
     justify-content: flex-end;
-    align-items: flex-end;
+    align-items: center;
     border-bottom: 1px solid lightblue;
     margin-bottom: 2vh;
 
@@ -46,11 +46,11 @@ h1 {
 
 .display {
     display: flex;
+    text-align: right;
     align-items: center;
     justify-content: right;
     width: 90vw;
     height: 30%;
-    padding-right: 10vw;
     
     color: aliceblue;
     font-size: 10vmin;
@@ -110,6 +110,10 @@ h1 {
     background-color: #8DF067;
 }
 
+.negate-active{
+    background-color: #d62828;
+}
+
 
 @media (min-width:425px)  {
     /* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
@@ -123,7 +127,10 @@ h1 {
 
     .display {
         font-size: 9vmin;
-        padding-right: 15vw;
+        padding-right: 5vw;
+        width: 60%;
+        max-width: 450px;
+
     }
 
     .button {
@@ -138,7 +145,6 @@ h1 {
 
 @media (min-width:560px) {
     .display {
-        padding-right: 27vw;
         font-size: 40px;
     }
 
