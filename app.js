@@ -154,7 +154,8 @@ function sub(a,b){
     return;
 }
 function mult(a,b){
-    result = a * b;
+    result = Math.round((a * b) * 1000000000000) / 1000000000000;
+   
     numbers = [`${result}`, uniCodeMult];
     display.innerHTML = `${result}${operationForDisplay}`;
     return;
@@ -163,7 +164,7 @@ function div(a,b){
     if(b == 0){
         display.innerHTML = "Don't divide by 0!";
     }else{
-        result = a / b;
+        result = Math.round((a / b) * 1000000000000) / 1000000000000;
         numbers = [`${result}`, uniCodeDiv];
         display.innerHTML = `${result}${operationForDisplay}`;
     }
